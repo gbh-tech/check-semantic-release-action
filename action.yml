@@ -1,0 +1,28 @@
+name: 'Check semantic for releases'
+description: 'Check if CURRENT_REF follows defined conventions'
+author: 'gbh-tech'
+branding:
+  icon: 'info'
+  color: 'gray-dark'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Determine if current git ref follows the convention
+      shell: bash -leo pipefail {0}
+      run: |
+        echo "Printing current environment variables for debugging purposes..."
+        env | grep GITHUB_
+
+        CURRENT_REF=${GITHUB_REF##*/}
+
+        echo "Current git reference : ${CURRENT_REF}"
+
+        if [[ "$CURRENT_REF" =~ ^v([0-9].[0-9].[0-9])$ || "$CURRENT_REF" =~ ^v([0-9].[0-9].[0-9])(-uat.[0-9]{1,2})$]]; then
+          echo "The tag created for this deployment follows the defined conventions."
+        else
+          echo "Error:"
+          echo "The tag created for this deployment does not match defined conventions."
+          echo "Check the README's 'Releases and deployments' section for more details."
+          exit 1
+        fi
