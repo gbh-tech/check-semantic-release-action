@@ -28,11 +28,10 @@ This action can output the following environment names:
 
 ## Environment mapping
 
-The environment name mapping is as follows:
+The environment tag should follow one of these patterns:
 
-- Push event on a branch with name `main` -> Outputs environment **stage**.
-- Tag push matching `v[0-9].[0-9].[0-9]-uat.[0-9]` -> Outputs **uat**.
-- Tag matching `v[0-9].[0-9].[0-9]` -> Outputs **production**.
+- `v[0-9].[0-9].[0-9]` -> **production**.
+- `v[0-9].[0-9].[0-9]-uat.[0-9]` -> **uat**.
 
 The Action uses `github.ref_name` to determine the branch or tag name.
 
@@ -41,8 +40,7 @@ The Action uses `github.ref_name` to determine the branch or tag name.
 See [action.yml](action.yml) for more info about the action.
 
 ```yaml
-- uses: gbh-tech/check-semantic-release@v0.0.1
-  id: env
+- uses: gbh-tech/check-semantic-release@v0.1.0
 ```
 
 ### Examples
@@ -54,13 +52,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: gbh-tech/check-semantic-release@v0.1.0
-        id: env
-      # Using outputs
-      - name: Show the selected environment name using output
-        env:
-          ENVIRONMENT: ${{ steps.env.outputs.environment }}
-        run: echo "Environment is ${ENVIRONMENT}"
-      # Using env. context
-      - name: Show the selected environment name using env context
-        run: echo "Environment is ${{ env.ENVIRONMENT }}"
 ```
