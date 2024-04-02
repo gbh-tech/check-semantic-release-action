@@ -19,7 +19,7 @@ This GitHub Action facilitates setting checking if tag follow our convention.
 
 ## Environment pattern
 
-The environment tag should follow one of these patterns to match out convention:
+The environment tag should follow one of these patterns to match our convention:
 
 - `v[0-9].[0-9].[0-9]`
 - `v[0-9].[0-9].[0-9]-uat.[0-9]`
