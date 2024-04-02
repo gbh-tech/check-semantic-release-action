@@ -5,8 +5,7 @@
 ## Content
 
 - [Overview](#overview)
-- [Environments](#environments)
-- [Environment mapping](#environment-mapping)
+- [Environment pattern](#environment-pattern)
 - [Usage](#usage)
   - [Examples](#examples)
 
@@ -18,22 +17,14 @@ This GitHub Action facilitates setting checking if tag follow our convention.
 > at this moment, you cannot change the triggering events or the environment
 > tag. Only use if you can adapt it on your workflow!
 
-## Environments
+## Environment pattern
 
-This action can output the following environment names:
+The environment tag should follow one of these patterns to match our convention:
 
-- `stage`
-- `uat`
-- `production`
+- `v[0-9].[0-9].[0-9]`
+- `v[0-9].[0-9].[0-9]-uat.[0-9]`
 
-## Environment mapping
-
-The environment tag should follow one of these patterns:
-
-- `v[0-9].[0-9].[0-9]` -> **production**.
-- `v[0-9].[0-9].[0-9]-uat.[0-9]` -> **uat**.
-
-The Action uses `github.ref_name` to determine the branch or tag name.
+The Action uses `github.ref_name` to determine the tag name.
 
 ## Usage
 
