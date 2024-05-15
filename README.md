@@ -31,7 +31,7 @@ The Action uses `github.ref_name` to determine the tag name.
 See [action.yml](action.yml) for more info about the action.
 
 ```yaml
-- uses: gbh-tech/check-semantic-release@v0.1.0
+- uses: gbh-tech/check-semantic-release@v0.1.2
 ```
 
 ### Examples
@@ -42,5 +42,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gbh-tech/check-semantic-release@v0.1.0
+      - uses: gbh-tech/check-semantic-release@v0.1.2
 ```
