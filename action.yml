@@ -12,8 +12,8 @@ runs:
       shell: bash -leo pipefail {0}
       run: |
         CURRENT_REF=${GITHUB_REF##*/}
-        REGEX_PRODUCTION="^v([0-9]+\.[0-9]+\.[0-9]+)$"
-        REGEX_UAT="^v([0-9].[0-9].[0-9])(-uat.[0-9]{1,2})$"
+        REGEX_PRODUCTION="^v([0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2})$"
+        REGEX_UAT="^v([0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2})(-uat.[0-9]{1,2})$"
 
         echo "Current git reference : ${CURRENT_REF}"
 
